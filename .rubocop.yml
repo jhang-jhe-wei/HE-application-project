@@ -1,0 +1,10 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+Style/Documentation:
+  Enabled: false
+Rails/BulkChangeTable:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - "config/environments/development.rb"
