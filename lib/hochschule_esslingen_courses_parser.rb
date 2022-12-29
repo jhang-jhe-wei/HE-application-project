@@ -25,6 +25,9 @@ class HochschuleEsslingenCoursesParser
   end
 
   def perform
+    cache = load_cache_file(COURSES_PATH)
+    return cache if cache
+
     data = class_urls.map do |class_url|
       Rails.logger.info("Parsing #{class_url}")
       extract_class_data_on(class_url)
