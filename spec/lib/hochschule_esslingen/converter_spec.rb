@@ -54,4 +54,19 @@ RSpec.describe HochschuleEsslingen::Converter do
       end
     end
   end
+
+    describe '#parse_course_time' do
+    subject(:result) { described_class.new(nil).send(:parse_course_time, arg) }
+
+    context 'when time range is 09:15 bis 12:30' do
+      let(:arg) { '09:15 bis 12:30' }
+
+      it 'expects to get started_minute_at is 555 and ended_minute_at is 750' do
+        expect(result).to eq(
+          started_minute_at: 555,
+          ended_minute_at: 750
+        )
+      end
+    end
+  end
 end
