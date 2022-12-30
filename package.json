@@ -2,10 +2,18 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/react_ujs": "^2.6.1",
     "autoprefixer": "^10.4.13",
     "esbuild": "^0.16.12",
     "postcss": "^8.4.20",
-    "tailwindcss": "^3.2.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react_ujs": "^2.6.2",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4"
   },
   "scripts": {
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
