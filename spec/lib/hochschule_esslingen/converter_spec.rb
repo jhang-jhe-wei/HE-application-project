@@ -90,5 +90,27 @@ RSpec.describe HochschuleEsslingen::Converter do
         )
       end
     end
+
+    context 'when time range is empty string' do
+      let(:arg) { '' }
+
+      it 'expects to get started_minute_at is nil and ended_minute_at is nil' do
+        expect(result).to eq(
+          started_minute_at: nil,
+          ended_minute_at: nil
+        )
+      end
+    end
+
+    context 'when time range is nil' do
+      let(:arg) { nil }
+
+      it 'expects to get started_minute_at is nil and ended_minute_at is nil' do
+        expect(result).to eq(
+          started_minute_at: nil,
+          ended_minute_at: nil
+        )
+      end
+    end
   end
 end
