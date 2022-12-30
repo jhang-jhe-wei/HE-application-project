@@ -9,7 +9,7 @@ module HochschuleEsslingen
     def convert
       @data.map do |course|
         {
-          class_name: course['class_name'],
+          name: course['class_name'],
           class_url: course['class_url'],
           semester: course['semester'],
           groups_attributes: course['termin_groups'].map do |group|
