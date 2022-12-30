@@ -1,6 +1,10 @@
 <section class="h-screen">
   <div class="h-full px-6 text-gray-800">
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <% if alert %>
+      <div class="fixed right-0 w-full p-4 text-sm text-center text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800 top-10" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
     <div
         class="flex flex-wrap items-center justify-center h-full xl:justify-center lg:justify-between g-6"
         >
