@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../hochschule_esslingen/converter'
 require_relative '../hochschule_esslingen/parser'
 

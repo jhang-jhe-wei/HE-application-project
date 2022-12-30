@@ -3,17 +3,17 @@
 module HochschuleEsslingen
   class Parser
     HE_WEBSITE = <<~URL
-    https://www3.hs-esslingen.de/qislsf/rds?
-    state=wsearchv&
-    search=1&
-    subdir=veranstaltung&
-    choice.veranstaltung.verartid=y&
-    veranstaltung.verartid=9&
-    veranstaltung.semester=20222&
-    P_start=0&
-    P_anzahl=10&
-    P.sort=&
-    _form=display
+      https://www3.hs-esslingen.de/qislsf/rds?
+      state=wsearchv&
+      search=1&
+      subdir=veranstaltung&
+      choice.veranstaltung.verartid=y&
+      veranstaltung.verartid=9&
+      veranstaltung.semester=20222&
+      P_start=0&
+      P_anzahl=10&
+      P.sort=&
+      _form=display
     URL
 
     COURSE_URLS_PATH = Rails.root.join('tmp/courses_urls.json')
@@ -59,7 +59,10 @@ module HochschuleEsslingen
                 hash[k] = tds[v].text
               end
               hash[:event_csi_link] = tds[0].all('a')[-1][:href]
-              hash[:place_link] = tds[title_hash['Raum']].all('a')[0][:href] if tds[title_hash['Raum']].all('a').present?
+              if tds[title_hash['Raum']].all('a').present?
+                hash[:place_link] =
+                  tds[title_hash['Raum']].all('a')[0][:href]
+              end
               hash
             end
           }

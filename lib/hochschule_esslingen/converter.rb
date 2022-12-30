@@ -6,6 +6,7 @@ module HochschuleEsslingen
       @data = data
     end
 
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def convert
       @data.map do |course|
         {
@@ -31,6 +32,7 @@ module HochschuleEsslingen
         }
       end
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     private
 
@@ -45,6 +47,7 @@ module HochschuleEsslingen
       hash[wday]
     end
 
+    # rubocop:disable Metrics/MethodLength
     def parse_date_range(date_range)
       case date_range
       when /^von (?<date>\d{2}.\d{2}.\d{4})/
@@ -59,6 +62,7 @@ module HochschuleEsslingen
         date_range_hash(nil, nil)
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def date_range_hash(started_date, ended_date)
       started_date_on = started_date ? Date.strptime(started_date, '%d.%m.%Y') : nil

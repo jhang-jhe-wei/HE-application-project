@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
-require "#{Rails.root.join('lib/hochschule_esslingen/converter')}"
+require Rails.root.join('lib/hochschule_esslingen/converter').to_s
 
 RSpec.describe HochschuleEsslingen::Converter do
   describe '#parse_date_range' do
