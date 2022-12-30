@@ -78,4 +78,4 @@ group :development do
   # gem "spring"
 end
 
-gem "devise", "~> 4.8"
+gem 'devise', '~> 4.8'
