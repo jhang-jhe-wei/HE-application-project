@@ -55,13 +55,17 @@ module HochschuleEsslingen
         date_range_hash(nil, $LAST_MATCH_INFO[:date])
       when /^(?<started_date>\d{2}.\d{2}.\d{4}) bis (?<ended_date>\d{2}.\d{2}.\d{4})/
         date_range_hash($LAST_MATCH_INFO[:started_date], $LAST_MATCH_INFO[:ended_date])
+      else
+        date_range_hash(nil, nil)
       end
     end
 
     def date_range_hash(started_date, ended_date)
+      started_date_on = started_date ? Date.strptime(started_date, '%d.%m.%Y') : nil
+      ended_date_on = ended_date ? Date.strptime(ended_date, '%d.%m.%Y') : nil
       {
-        started_date_on: started_date && Date.strptime(started_date, '%d.%m.%Y'),
-        ended_date_on: ended_date && Date.strptime(ended_date, '%d.%m.%Y')
+        started_date_on:,
+        ended_date_on:
       }
     end
 
