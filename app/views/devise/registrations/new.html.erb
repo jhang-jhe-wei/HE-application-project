@@ -1,0 +1,48 @@
+<section class="h-screen">
+  <div class="h-full px-6 text-gray-800">
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div
+        class="flex flex-wrap items-center justify-center h-full xl:justify-center lg:justify-between g-6"
+        >
+        <div
+            class="mb-12 grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 md:mb-0"
+            >
+            <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                class="w-full"
+                alt="Sample image"
+                />
+        </div>
+          <div class="mb-12 xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 md:mb-0">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <!-- Email input -->
+        <div class="mb-6">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none", placeholder: "Email address" %>
+
+        </div>
+
+        <!-- Password input -->
+        <div class="mb-3">
+          <%= f.password_field :password, autocomplete: "new-password", class: "block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none", placeholder: "Password" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+
+        </div>
+
+        <div class="mb-6">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none", placeholder: "Confirmation Password" %>
+        </div>
+
+        <div class="text-center lg:text-left">
+          <%= f.submit "Sign up", class: "inline-block py-3 text-sm font-medium leading-snug text-white uppercase bg-blue-600 rounded shadow-md px-7 hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" %>
+          <p class="pt-1 mt-2 mb-0 text-sm font-semibold">
+          Already have an account?
+          <%= link_to "Log In", new_session_path(resource_name), class: "text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out" %>
+          </p>
+        </div>
+      <% end %>
+          </div>
+    </div>
+  </div>
+</section>
