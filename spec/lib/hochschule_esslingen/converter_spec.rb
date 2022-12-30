@@ -53,9 +53,31 @@ RSpec.describe HochschuleEsslingen::Converter do
         )
       end
     end
+
+    context 'when date range is empty string' do
+      let(:arg) { '' }
+
+      it 'expects to get started_date_on  and ended_date_on are nil' do
+        expect(result).to eq(
+          started_date_on: nil,
+          ended_date_on: nil
+        )
+      end
+    end
+
+    context 'when date range is nil' do
+      let(:arg) { nil }
+
+      it 'expects to get started_date_on  and ended_date_on are nil' do
+        expect(result).to eq(
+          started_date_on: nil,
+          ended_date_on: nil
+        )
+      end
+    end
   end
 
-    describe '#parse_course_time' do
+  describe '#parse_course_time' do
     subject(:result) { described_class.new(nil).send(:parse_course_time, arg) }
 
     context 'when time range is 09:15 bis 12:30' do
