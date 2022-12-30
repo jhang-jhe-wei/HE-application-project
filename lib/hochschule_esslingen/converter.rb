@@ -71,10 +71,12 @@ module HochschuleEsslingen
 
     def parse_course_time(time_range)
       result = /^(?<started_time>\d{2}:\d{2}) bis (?<ended_time>\d{2}:\d{2})/.match(time_range)
-      {
-        started_minute_at: hour_and_min_to_mins(result[:started_time]),
-        ended_minute_at: hour_and_min_to_mins(result[:ended_time])
-      }
+      return { started_minute_at: nil, ended_minute_at: nil } unless result
+
+      started_minute_at = hour_and_min_to_mins(result[:started_time])
+      ended_minute_at = hour_and_min_to_mins(result[:ended_time])
+
+      { started_minute_at:, ended_minute_at: }
     end
 
     def hour_and_min_to_mins(time)
