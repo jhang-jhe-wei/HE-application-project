@@ -50,7 +50,7 @@ jobs:
 
     - name: Prepare
       run: |
-        bundle exec rake test:prepare
+        bundle exec rake db:test:prepare
         bundle exec rake db:migrate
 
     - name: Test
