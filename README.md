@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+- 3.1.2
 
-Things you may want to cover:
+## System dependencies
+- [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+- [SQLite](https://www.sqlite.org/download.html)
+- [Chromedriver](https://chromedriver.chromium.org/downloads)(for test)
 
-* Ruby version
+## Configuration
+```sh
+bundle install
+yarn install
+rails db:migrate
+bin/dev
+```
 
-* System dependencies
+## Database initialization
+```sh
+rails db:create
+rails db:migrate
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run the test suite
+```sh
+cucumber
+rspec
+```
