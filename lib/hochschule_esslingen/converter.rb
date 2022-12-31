@@ -13,10 +13,10 @@ module HochschuleEsslingen
           name: course['class_name'],
           class_url: course['class_url'],
           semester: course['semester'],
-          groups_attributes: course['termin_groups'].map do |group|
+          groups: course['termin_groups'].map do |group|
             {
               name: group['name'],
-              events_attributes: group['events'].map do |event|
+              events: group['events'].map do |event|
                 {
                   csi_url: event['event_csi_link'],
                   teacher_name: event['Lehrperson'],

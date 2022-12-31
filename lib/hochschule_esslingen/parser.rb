@@ -51,7 +51,7 @@ module HochschuleEsslingen
           title_hash = {}
           table.all('tr:first-child th:not(:first-child)').each_with_index { |th, i| title_hash[th.text] = i + 1 }
           {
-            group: /Termine Gruppe: (.*)/.match(table.find('caption').text)[1],
+            name: /Termine Gruppe: (.*)/.match(table.find('caption').text)[1],
             events: table.all('tr:not(:first-child)').map do |tr|
               tds = tr.all('td')
               hash = {}
