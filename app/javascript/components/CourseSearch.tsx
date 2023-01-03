@@ -37,7 +37,7 @@ const CourseSearch = () => {
           {
             courses.map(course => (
               course.groups.length === 0 ?
-              <ResultItem key={`course-${course.id}`} className={course.name}/>
+              <ResultItem key={`course-${course.id}`} className={course.name} classId={course.id} />
               :
               course.groups.map(group => (
                 <ResultItem key={`course-${course.id}-group-${group.id}`} className={course.name} group={group}/>
