@@ -5,7 +5,6 @@ class CourseRegisterRecordsController < ApplicationController
   # GET /course_register_records.json
   def index
     @course_register_records = current_user.course_register_records.all
-    render json: @course_register_records.as_json(include: :registerable )
   end
 
   # POST /course_register_records
