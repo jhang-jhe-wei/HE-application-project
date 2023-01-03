@@ -12,7 +12,8 @@ interface GroupEventState {
   ended_minute_at: number | null;
 }
 
-interface CourseGroupState {
+export interface CourseGroupState {
+  id: number;
   name: string;
   events: GroupEventState[];
 }
