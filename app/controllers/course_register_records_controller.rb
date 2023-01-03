@@ -10,12 +10,13 @@ class CourseRegisterRecordsController < ApplicationController
   # POST /course_register_records
   # POST /course_register_records.json
   def create
-    @course_register_record = current_user.course_register_records.build(course_register_record_params)
+    course_register_record = current_user.course_register_records.build(course_register_record_params)
 
-    if @course_register_record.save
-      render json: { status: 'ok' }, status: :created, location: @course_register_record
+    if course_register_record.save
+      @course_register_records = current_user.course_register_records.all
+      render :index, status: :created, location: course_register_record
     else
-      render json: @course_register_record.errors, status: :unprocessable_entity
+      render json: course_register_record.errors, status: :unprocessable_entity
     end
   end
 

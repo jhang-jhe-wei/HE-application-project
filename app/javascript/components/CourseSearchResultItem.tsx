@@ -1,7 +1,8 @@
-import React from "react";
-import {CourseGroupState} from "../courseReducer";
+import React, {useContext} from "react";
+import { CourseGroupState, ReducerActions } from "../courseReducer";
 import GroupIcon from "../icons/group";
 import { default as Axios } from 'axios';
+import CourseContext from "../courseContext";
 
 export interface CourseSearchResultItemProps {
   classId?: number;
@@ -10,6 +11,7 @@ export interface CourseSearchResultItemProps {
 }
 
 const CourseSearchResultItem = (props: CourseSearchResultItemProps) => {
+  const [, dispatch] = useContext(CourseContext)
   const {
     classId,
     className,
@@ -19,7 +21,7 @@ const CourseSearchResultItem = (props: CourseSearchResultItemProps) => {
   const postCourseRegisteration = async (id: number, type: string) => {
     Axios.post(`/course_register_records.json`, { course_register_record: { registerable_id: id, registerable_type: type }})
       .then((response) => {
-        console.log(response.data)
+          dispatch({ type: ReducerActions.SET_SELECTED_COURSE_LIST, payload: response.data })
       })
       .catch((error) => {
         console.log(error);
