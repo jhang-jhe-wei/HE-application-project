@@ -18,7 +18,7 @@ export interface CourseGroupState {
   events: GroupEventState[];
 }
 
-export interface Coursetate {
+export interface CourseState {
   id: number;
   name: string;
   class_url: string;
