@@ -6,7 +6,7 @@
 ## System dependencies
 - [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 - [SQLite](https://www.sqlite.org/download.html)
-- [Chromedriver](https://chromedriver.chromium.org/downloads)(for test)
+- [Chromedriver](https://chromedriver.chromium.org/downloads)(for test and load courses)
 
 ## Configuration
 ```sh
