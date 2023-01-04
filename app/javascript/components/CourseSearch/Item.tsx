@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import { CourseGroupState, ReducerActions } from "../courseReducer";
-import GroupIcon from "../icons/group";
+import { CourseGroupState, ReducerActions } from "../../courseReducer";
+import GroupIcon from "../../icons/group";
 import { default as Axios } from 'axios';
-import CourseContext from "../courseContext";
+import CourseContext from "../../courseContext";
 
 export interface CourseSearchResultItemProps {
   classId?: number;

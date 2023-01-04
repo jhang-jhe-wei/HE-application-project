@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { default as Axios } from 'axios';
-import { CourseState } from '../courseReducer';
-import { default as ResultItem } from './CourseSearchResultItem';
+import { CourseState } from '../../courseReducer';
+import { default as ResultItem } from './Item';
 
 const CourseSearch = () => {
   const [searchText, setSearchText] = useState('')
