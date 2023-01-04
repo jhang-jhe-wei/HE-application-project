@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import CourseContext from '../courseContext';
-import { SelectedCourseState } from '../courseReducer';
-import GroupIcon from '../icons/group';
+import CourseContext from '../../courseContext';
+import { SelectedCourseState } from '../../courseReducer';
+import GroupIcon from '../../icons/group';
 import { default as Axios } from 'axios';
-import { ReducerActions } from '../courseReducer';
+import { ReducerActions } from '../../courseReducer';
 
 const SelectedCoursesListItem = (props: SelectedCourseState) => {
   const [, dispatch] = useContext(CourseContext)
