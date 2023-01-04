@@ -27,7 +27,7 @@ const Home = () => {
     <CourseContext.Provider value={[state, dispatch]}>
       <div className="container py-12 mx-auto">
         <div className="grid grid-cols-4 gap-4">
-          <div className="col-span-1">
+          <div className="flex flex-col justify-between col-span-1">
             <CourseSearch/>
             <SelectedCourseList/>
           </div>

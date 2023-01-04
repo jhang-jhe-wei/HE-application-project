@@ -9,7 +9,7 @@ const TimeTable = () => {
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col flex-auto overflow-auto bg-white isolate">
-        <div style={{ width: '165%' }} className="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
+        <div className="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
           <Header/>
 
           <div className="flex flex-auto">
