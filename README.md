@@ -22,6 +22,11 @@ rails db:create
 rails db:migrate
 ```
 
+## How to load courses into your Database
+```sh
+rake course:load_data_from_online
+```
+
 ## How to run the test suite
 ```sh
 cucumber
