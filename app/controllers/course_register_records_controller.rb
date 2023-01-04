@@ -23,7 +23,17 @@ class CourseRegisterRecordsController < ApplicationController
   # DELETE /course_register_records/1
   # DELETE /course_register_records/1.json
   def destroy
+    raise 'Forbidden' unless current_user.course_register_records.include?(@course_register_record)
+
     @course_register_record.destroy
+    @course_register_records = current_user.course_register_records.all
+    render :index
+  rescue StandardError => e
+    if e.message == 'Forbidden'
+      render json: { error: 'Forbidden' }, status: :forbidden
+    else
+      render json: { error: e.message }, status: :forbidden
+    end
   end
 
   private
