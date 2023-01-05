@@ -1,10 +1,11 @@
 import React from "react"
+import { TIME_LIST } from ".";
 
 const Events = () => {
   return (
     <ol
       className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
-      style={{ gridTemplateRows: '1.75rem repeat(288, minmax(0, 1fr)) auto' }}
+      style={{ gridTemplateRows: `repeat(${TIME_LIST.length * 5}, minmax(0, 1fr))` }}
     >
       <li className="relative flex mt-px sm:col-start-3" style={{ gridRow: '74 / span 12' }}>
         <a
