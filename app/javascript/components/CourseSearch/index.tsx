@@ -36,12 +36,7 @@ const CourseSearch = () => {
         <div className="max-h-full pr-2 overflow-y-auto">
           {
             courses.map(course => (
-              course.groups.length === 0 ?
-              <ResultItem key={`course-${course.id}`} className={course.name} classId={course.id} />
-              :
-              course.groups.map(group => (
-                <ResultItem key={`course-${course.id}-group-${group.id}`} className={course.name} group={group}/>
-                ))
+              <ResultItem key={`${course.type}-${course.id}`} {...course}/>
             ))
           }
         </div>

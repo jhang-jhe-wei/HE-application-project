@@ -6,29 +6,16 @@ export interface GroupEventState {
   place: string;
 }
 
-export interface CourseGroupState {
-  id: number;
-  name: string;
-  events: GroupEventState[];
-}
-
 export interface CourseState {
   id: number;
-  name: string;
-  class_url: string;
-  semester: string;
-  groups: CourseGroupState[];
-}
-
-export interface SelectedCourseState {
-  id: number;
+  type: 'Course'| 'CourseTerminGroup';
   className: string;
   groupName: string;
   events: GroupEventState[];
 }
 
 export interface ReducerStateProps {
-  selectedCourseList: SelectedCourseState[];
+  selectedCourseList: CourseState[];
 }
 
 export const ReducerActions = {
@@ -36,7 +23,7 @@ export const ReducerActions = {
 } as const
 
 export type ReducerActionProps =
-    | { type: typeof ReducerActions.SET_SELECTED_COURSE_LIST; payload: SelectedCourseState[] }
+  | { type: typeof ReducerActions.SET_SELECTED_COURSE_LIST; payload: CourseState[] }
 
 export const initReducer = (): ReducerStateProps => {
   return {

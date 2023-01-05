@@ -1,21 +1,16 @@
 import React, {useContext} from "react";
-import { CourseGroupState, ReducerActions } from "../../courseReducer";
+import { CourseState, ReducerActions } from "../../courseReducer";
 import GroupIcon from "../../icons/group";
 import { default as Axios } from 'axios';
 import CourseContext from "../../courseContext";
 
-export interface CourseSearchResultItemProps {
-  classId?: number;
-  className: string;
-  group?: CourseGroupState;
-}
-
-const CourseSearchResultItem = (props: CourseSearchResultItemProps) => {
+const CourseSearchResultItem = (props: CourseState) => {
   const [, dispatch] = useContext(CourseContext)
   const {
-    classId,
+    id,
     className,
-    group
+    groupName,
+    type
   } = props;
 
   const postCourseRegisteration = async (id: number, type: string) => {
@@ -38,7 +33,7 @@ const CourseSearchResultItem = (props: CourseSearchResultItemProps) => {
           <p className="flex items-center text-sm">
             <GroupIcon/>
             <span className="ml-1">
-              { group? group.name: 'No Grouping' }
+              { groupName }
             </span>
           </p>
         </div>
@@ -46,8 +41,6 @@ const CourseSearchResultItem = (props: CourseSearchResultItemProps) => {
       <button
         className="px-4 py-2 text-lg bg-gray-200 hover:bg-gray-300"
         onClick={() => {
-          const type = group? 'CourseTerminGroup': 'Course';
-          const id = group? group.id: classId;
           postCourseRegisteration(id, type);
         }}
       >
