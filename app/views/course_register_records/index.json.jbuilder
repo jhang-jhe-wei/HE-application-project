@@ -7,8 +7,16 @@ json.array! @course_register_records do |course_register_record|
   when Course
     json.className register_record.name
     json.groupName 'No Grouping'
+    json.events []
   when CourseTerminGroup
     json.className register_record.course.name
     json.groupName register_record.name
+    json.events register_record.events do |event|
+      json.id event.id
+      json.startedMinuteAt event.started_minute_at
+      json.endedMinuteAt event.ended_minute_at
+      json.place event.place
+      json.wday event.wday
+    end
   end
 end

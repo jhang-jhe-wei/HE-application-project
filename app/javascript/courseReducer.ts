@@ -1,15 +1,9 @@
-interface GroupEventState {
+export interface GroupEventState {
   id: number;
-  started_date_on: Date | null;
-  ended_date_on: Date | null;
-  csi_url: string | null;
-  teacher_name: string | null;
-  place_url: string | null;
-  place: string | null;
-  frequency: string | null;
-  wday: number | null;
-  started_minute_at: number | null;
-  ended_minute_at: number | null;
+  wday: number;
+  endedMinuteAt: number;
+  startedMinuteAt: number;
+  place: string;
 }
 
 export interface CourseGroupState {
@@ -30,6 +24,7 @@ export interface SelectedCourseState {
   id: number;
   className: string;
   groupName: string;
+  events: GroupEventState[];
 }
 
 export interface ReducerStateProps {
