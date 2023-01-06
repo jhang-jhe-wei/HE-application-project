@@ -1,5 +1,6 @@
 import React from 'react';
 import {GroupEventState} from '../../courseReducer';
+import classNames from 'classnames';
 
 const calculateGridRowValue = (event: GroupEventState) => {
   const position = Math.floor((event.startedMinuteAt - 7 * 60) / 5) + 1
@@ -23,21 +24,28 @@ const calculateColStartValue = (wday: number) => {
 interface EventProps {
   event: GroupEventState;
   courseName: string;
-  className?: string;
+  hasConflict?: boolean;
 }
 
 const Event = (props: EventProps) => {
   const {
     event,
     courseName,
-    className = ''
+    hasConflict = false
   } = props;
 
   return (
-    <li className={`relative flex mt-px ${className}`} style={{ gridRow: `${calculateGridRowValue(event)}`, gridColumnStart: `${calculateColStartValue(event.wday)}` }}>
+    <li
+      className={classNames('relative flex mt-px', {
+      'animate-[scale-x_1s_linear_infinite]': hasConflict
+    })}
+    style={{
+      gridRow: `${calculateGridRowValue(event)}`,
+      gridColumnStart: `${calculateColStartValue(event.wday)}` }
+    }>
       <a
         href="#"
-        className="absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100"
+        className={classNames("absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100", { 'bg-red-300': hasConflict })}
       >
         <p className="order-1 font-semibold text-blue-700">{ courseName }</p>
         <p className="text-blue-500 group-hover:text-blue-700">

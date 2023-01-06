@@ -2,6 +2,20 @@ import React, {useContext} from 'react';
 import CourseContext from '../../courseContext';
 import { TIME_LIST } from ".";
 import Event from './Event';
+import {GroupEventState} from '../../courseReducer';
+
+const colipseEvents = (newEvent: GroupEventState, currentEvents: GroupEventState[]): boolean => {
+  const result = currentEvents.find(event => {
+    if(
+      (newEvent.wday === event.wday) &&
+      (newEvent.startedMinuteAt >= event.startedMinuteAt && newEvent.startedMinuteAt < event.endedMinuteAt) ||
+      (newEvent.endedMinuteAt > event.startedMinuteAt && newEvent.endedMinuteAt <= event.endedMinuteAt)
+    ) return true
+    return false;
+  })
+  if(result) return true
+  return false
+}
 
 const Events = () => {
   const [state, ] = useContext(CourseContext)
@@ -9,6 +23,7 @@ const Events = () => {
     selectedCourseList,
     hoveredCourse
   } = state;
+
 
   return (
     <ol
@@ -24,7 +39,12 @@ const Events = () => {
       }
       {
         hoveredCourse && hoveredCourse.events.map(event => (
-          <Event key={event.id} event={event} courseName={hoveredCourse.className} className={`animate-[scale-x_1s_linear_infinite]`}/>
+          <Event
+            key={event.id}
+            event={event}
+            courseName={hoveredCourse.className}
+            hasConflict={colipseEvents(event, selectedCourseList.map(course => course.events).flat())}
+          />
           ))
       }
 </ol>
