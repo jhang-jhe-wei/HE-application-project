@@ -42,7 +42,9 @@ module HochschuleEsslingen
         'Di.' => 2,
         'Mi.' => 3,
         'Do.' => 4,
-        'Fr.' => 5
+        'Fr.' => 5,
+        'Sa.' => 6,
+        'Su.' => 7
       }
       hash[wday]
     end
