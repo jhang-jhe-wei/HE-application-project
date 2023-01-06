@@ -47,7 +47,7 @@ const Event = (props: EventProps) => {
     }>
       <a
         href="#"
-        className={classNames("absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100", { 'bg-red-300': hasConflict })}
+        className={classNames("absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100 h-full", { 'bg-red-300': hasConflict })}
       >
         <p className="order-1 font-semibold text-blue-700">{ courseName }</p>
         <p className="text-blue-500 group-hover:text-blue-700">
