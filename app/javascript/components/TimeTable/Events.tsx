@@ -8,9 +8,10 @@ const colipseEvents = (newEvent: GroupEventState, currentEvents: GroupEventState
   const result = currentEvents.find(event => {
     if(
       (newEvent.wday === event.wday) &&
-      (newEvent.startedMinuteAt >= event.startedMinuteAt && newEvent.startedMinuteAt < event.endedMinuteAt) ||
-      (newEvent.endedMinuteAt > event.startedMinuteAt && newEvent.endedMinuteAt <= event.endedMinuteAt)
-    ) return true
+      (
+        (newEvent.startedMinuteAt >= event.startedMinuteAt && newEvent.startedMinuteAt < event.endedMinuteAt) ||
+        (newEvent.endedMinuteAt > event.startedMinuteAt && newEvent.endedMinuteAt <= event.endedMinuteAt)
+      )) return true
     return false;
   })
   if(result) return true
@@ -43,6 +44,7 @@ const Events = () => {
             key={event.id}
             event={event}
             courseName={hoveredCourse.className}
+            focus={true}
             hasConflict={colipseEvents(event, selectedCourseList.map(course => course.events).flat())}
           />
           ))

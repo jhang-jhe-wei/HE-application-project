@@ -24,6 +24,7 @@ const calculateColStartValue = (wday: number) => {
 interface EventProps {
   event: GroupEventState;
   courseName: string;
+  focus?: boolean;
   hasConflict?: boolean;
 }
 
@@ -31,13 +32,14 @@ const Event = (props: EventProps) => {
   const {
     event,
     courseName,
+    focus = false,
     hasConflict = false
   } = props;
 
   return (
     <li
       className={classNames('relative flex mt-px', {
-      'animate-[scale-x_1s_linear_infinite]': hasConflict
+      'animate-[scale-x_1s_linear_infinite]': focus
     })}
     style={{
       gridRow: `${calculateGridRowValue(event)}`,
