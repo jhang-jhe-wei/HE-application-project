@@ -23,19 +23,21 @@ const calculateColStartValue = (wday: number) => {
 interface EventProps {
   event: GroupEventState;
   courseName: string;
+  className?: string;
 }
 
 const Event = (props: EventProps) => {
   const {
     event,
-    courseName
+    courseName,
+    className = ''
   } = props;
 
   return (
-    <li className={`relative flex mt-px sm:${calculateColStartValue(event.wday)}`} style={{ gridRow: `${calculateGridRowValue(event)}` }}>
+    <li className={`relative flex mt-px sm:${calculateColStartValue(event.wday)} ${className}`} style={{ gridRow: `${calculateGridRowValue(event)}` }}>
       <a
         href="#"
-        className="absolute inset-0 flex flex-col p-2 overflow-y-auto text-xs rounded-lg group bg-blue-50 leading-5 hover:bg-blue-100"
+        className="absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100"
       >
         <p className="order-1 font-semibold text-blue-700">{ courseName }</p>
         <p className="text-blue-500 group-hover:text-blue-700">

@@ -24,7 +24,7 @@ const Events = () => {
       }
       {
         hoveredCourse && hoveredCourse.events.map(event => (
-          <Event key={event.id} event={event} courseName={hoveredCourse.className} />
+          <Event key={event.id} event={event} courseName={hoveredCourse.className} className={`animate-[scale-x_1s_linear_infinite]`}/>
           ))
       }
 </ol>
