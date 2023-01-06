@@ -16,8 +16,8 @@ const calculateTimeDuration = (event: GroupEventState) => {
 }
 
 const calculateColStartValue = (wday: number) => {
-  if(wday === 0) return 'col-start-7';
-  return `col-start-${wday}`
+  if(wday === 0) return 7;
+  return wday
 }
 
 interface EventProps {
@@ -34,7 +34,7 @@ const Event = (props: EventProps) => {
   } = props;
 
   return (
-    <li className={`relative flex mt-px sm:${calculateColStartValue(event.wday)} ${className}`} style={{ gridRow: `${calculateGridRowValue(event)}` }}>
+    <li className={`relative flex mt-px ${className}`} style={{ gridRow: `${calculateGridRowValue(event)}`, gridColumnStart: `${calculateColStartValue(event.wday)}` }}>
       <a
         href="#"
         className="absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100"
