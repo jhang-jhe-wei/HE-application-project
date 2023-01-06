@@ -16,18 +16,22 @@ export interface CourseState {
 
 export interface ReducerStateProps {
   selectedCourseList: CourseState[];
+  hoveredCourse: CourseState;
 }
 
 export const ReducerActions = {
   SET_SELECTED_COURSE_LIST: 'course$set_selected_course_list',
+  SET_HOVERED_COURSE: 'course$set_hovered_course'
 } as const
 
 export type ReducerActionProps =
   | { type: typeof ReducerActions.SET_SELECTED_COURSE_LIST; payload: CourseState[] }
+  | { type: typeof ReducerActions.SET_HOVERED_COURSE; payload: CourseState }
 
 export const initReducer = (): ReducerStateProps => {
   return {
-    selectedCourseList: []
+    selectedCourseList: [],
+    hoveredCourse: undefined,
   }
 }
 
@@ -37,6 +41,12 @@ const Reducer = (state: ReducerStateProps, action: ReducerActionProps) => {
       return {
         ...state,
         selectedCourseList: action.payload
+      };
+    }
+    case ReducerActions.SET_HOVERED_COURSE: {
+      return {
+        ...state,
+        hoveredCourse: action.payload
       };
     }
     default:

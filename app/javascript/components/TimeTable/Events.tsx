@@ -5,6 +5,10 @@ import Event from './Event';
 
 const Events = () => {
   const [state, ] = useContext(CourseContext)
+  const {
+    selectedCourseList,
+    hoveredCourse
+  } = state;
 
   return (
     <ol
@@ -12,13 +16,18 @@ const Events = () => {
       style={{ gridTemplateRows: `repeat(${TIME_LIST.length * 12}, 1fr)` }}
     >
       {
-        state.selectedCourseList.map(course => (
+        selectedCourseList.map(course => (
           course.events.map(event => (
-            <Event event={event} courseName={course.className}/>
+            <Event key={event.id} event={event} courseName={course.className}/>
             ))
         ))
       }
-    </ol>
+      {
+        hoveredCourse && hoveredCourse.events.map(event => (
+          <Event key={event.id} event={event} courseName={hoveredCourse.className} />
+          ))
+      }
+</ol>
   )
 }
 

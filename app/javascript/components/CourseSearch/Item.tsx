@@ -1,17 +1,17 @@
 import React, {useContext} from "react";
-import { CourseState, ReducerActions } from "../../courseReducer";
+import Reducer, { CourseState, ReducerActions } from "../../courseReducer";
 import GroupIcon from "../../icons/group";
 import { default as Axios } from 'axios';
 import CourseContext from "../../courseContext";
 
-const CourseSearchResultItem = (props: CourseState) => {
+const CourseSearchResultItem = (course: CourseState) => {
   const [, dispatch] = useContext(CourseContext)
   const {
     id,
     className,
     groupName,
     type
-  } = props;
+  } = course;
 
   const postCourseRegisteration = async (id: number, type: string) => {
     Axios.post(`/course_register_records.json`, { course_register_record: { registerable_id: id, registerable_type: type }})
@@ -43,6 +43,8 @@ const CourseSearchResultItem = (props: CourseState) => {
         onClick={() => {
           postCourseRegisteration(id, type);
         }}
+        onMouseEnter={()=> dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: course })}
+        onMouseLeave={()=> dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: undefined })}
       >
         +
       </button>
