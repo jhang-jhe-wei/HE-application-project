@@ -9,6 +9,10 @@ interface FetchCoursesResponseState {
   nextPage: null| number;
 }
 
+const fetchCourses = async (q: string, page: number) => {
+  return Axios.get<FetchCoursesResponseState>(`/courses.json`, { params: { q, page } })
+}
+
 const CourseSearch = () => {
   const [searchText, setSearchText] = useState('')
   const [courses, setCourses] = useState<CourseState[]>([])
@@ -16,15 +20,7 @@ const CourseSearch = () => {
   const [nextPage, setNextPage] = useState(null);
   const scrollParentRef = useRef();
 
-  useEffect(() => {
-    if (searchText === '') {
-      setNextPage(null)
-      return;
-    }
-    setNextPage(1)
-  }, [searchText])
-
-  const fetchCourses = useCallback(
+  const fetchMoreCourses = useCallback(
     async () => {
       if (fetching) {
         return;
@@ -36,8 +32,7 @@ const CourseSearch = () => {
       }
 
       setFetching(true);
-
-      Axios.get<FetchCoursesResponseState>(`/courses.json`, { params: { q: searchText, page: nextPage } })
+      fetchCourses(searchText, nextPage)
         .then((response) => {
           const { courses: newCourses, nextPage } = response.data
           setCourses([...courses, ...newCourses])
@@ -48,6 +43,17 @@ const CourseSearch = () => {
 
     }, [searchText, nextPage, fetching]
   );
+
+  useEffect(() => {
+    fetchCourses(searchText, 1)
+      .then((response) => {
+        const { courses: newCourses, nextPage } = response.data
+        setCourses(newCourses)
+        setNextPage(nextPage)
+      })
+      .catch((error) => console.log(error))
+      .finally(() => setFetching(false))
+  }, [searchText])
 
   const loader = (
     <div key="loader" className="loader">
@@ -65,7 +71,7 @@ const CourseSearch = () => {
       />
       <div className="p-4 pr-2 mt-4 overflow-y-auto bg-white rounded-md h-96" ref={scrollParentRef}>
         <InfiniteScroll
-          loadMore={fetchCourses}
+          loadMore={fetchMoreCourses}
           hasMore={!!nextPage}
           loader={loader}
           useWindow={false}
