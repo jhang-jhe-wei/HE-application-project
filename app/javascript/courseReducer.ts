@@ -14,8 +14,15 @@ export interface CourseState {
   events: GroupEventState[];
 }
 
+export interface RegisteredCourseRecordState {
+  id: number;
+  className: string;
+  groupName: string;
+  events: GroupEventState[];
+}
+
 export interface ReducerStateProps {
-  selectedCourseList: CourseState[];
+  selectedCourseList: RegisteredCourseRecordState[];
   hoveredCourse: CourseState;
 }
 
@@ -25,7 +32,7 @@ export const ReducerActions = {
 } as const
 
 export type ReducerActionProps =
-  | { type: typeof ReducerActions.SET_SELECTED_COURSE_LIST; payload: CourseState[] }
+  | { type: typeof ReducerActions.SET_SELECTED_COURSE_LIST; payload: RegisteredCourseRecordState[] }
   | { type: typeof ReducerActions.SET_HOVERED_COURSE; payload: CourseState }
 
 export const initReducer = (): ReducerStateProps => {
