@@ -18,7 +18,7 @@ class CourseRegisterRecordsController < ApplicationController
       .check_events_conflict!
 
     course_register_record.save!
-    @course_register_records = current_user.course_register_records.all
+    @course_register_records = current_user.course_register_records.all.order(id: :desc)
     render :index, status: :created, location: course_register_record
   rescue StandardError, ActiveRecord::RecordInvalid => e
     render json: [e], status: :unprocessable_entity
@@ -30,7 +30,7 @@ class CourseRegisterRecordsController < ApplicationController
     raise 'Forbidden' unless current_user.course_register_records.include?(@course_register_record)
 
     @course_register_record.destroy
-    @course_register_records = current_user.course_register_records.all
+    @course_register_records = current_user.course_register_records.all.order(id: :desc)
     render :index
   rescue StandardError => e
     if e.message == 'Forbidden'
