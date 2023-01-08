@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CourseRegisterRecordsController < ApplicationController
-  before_action :set_course_register_record, only: %i[ destroy ]
+  before_action :set_course_register_record, only: %i[destroy]
 
   # GET /course_register_records
   # GET /course_register_records.json

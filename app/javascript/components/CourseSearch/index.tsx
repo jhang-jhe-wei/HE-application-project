@@ -1,29 +1,60 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback, useRef} from 'react';
 import { default as Axios } from 'axios';
 import { CourseState } from '../../courseReducer';
 import { default as ResultItem } from './Item';
+import InfiniteScroll from 'react-infinite-scroller';
+
+interface FetchCoursesResponseState {
+  courses: CourseState[];
+  nextPage: null| number;
+}
 
 const CourseSearch = () => {
   const [searchText, setSearchText] = useState('')
   const [courses, setCourses] = useState<CourseState[]>([])
+  const [fetching, setFetching] = useState(false);
+  const [nextPage, setNextPage] = useState(null);
+  const scrollParentRef = useRef();
 
   useEffect(() => {
-    console.log(searchText)
-    if(!searchText) {
-      setCourses([])
-      return
+    if (searchText === '') {
+      setNextPage(null)
+      return;
     }
-    const fetchCourse = async (q: string) => {
-      Axios.get<CourseState[]>(`/courses.json`, { params: { q } })
-        .then((response) => {
-          setCourses(response.data)
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-    }
-    fetchCourse(searchText);
+    setNextPage(1)
   }, [searchText])
+
+  const fetchCourses = useCallback(
+    async () => {
+      if (fetching) {
+        return;
+      }
+
+      if (searchText === '') {
+        setCourses([]);
+        return;
+      }
+
+      setFetching(true);
+
+      Axios.get<FetchCoursesResponseState>(`/courses.json`, { params: { q: searchText, page: nextPage } })
+        .then((response) => {
+          const { courses: newCourses, nextPage } = response.data
+          setCourses([...courses, ...newCourses])
+          setNextPage(nextPage)
+        })
+        .catch((error) => console.log(error))
+        .finally(() => setFetching(false))
+
+    }, [searchText, nextPage, fetching]
+  );
+
+  const loader = (
+    <div key="loader" className="loader">
+      Loading ...
+    </div>
+  );
+
   return (
     <div>
       <input
@@ -32,14 +63,22 @@ const CourseSearch = () => {
         onChange={(e) => setSearchText(e.target.value)}
         className="block w-full p-4 placeholder-gray-400 border border-gray-100 rounded-md bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
       />
-      <div className="p-4 pr-2 mt-4 bg-white rounded-md h-96">
-        <div className="max-h-full pr-2 overflow-y-auto">
-          {
-            courses.map(course => (
-              <ResultItem key={`${course.type}-${course.id}`} {...course}/>
-            ))
-          }
-        </div>
+      <div className="p-4 pr-2 mt-4 overflow-y-auto bg-white rounded-md h-96" ref={scrollParentRef}>
+        <InfiniteScroll
+          loadMore={fetchCourses}
+          hasMore={!!nextPage}
+          loader={loader}
+          useWindow={false}
+          getScrollParent={() => scrollParentRef.current}
+        >
+          <ul className="max-h-full pr-2">
+            {
+              courses.map(course => (
+                <ResultItem key={`${course.type}-${course.id}`} {...course}/>
+                ))
+            }
+          </ul>
+        </InfiniteScroll>
       </div>
     </div>
   )
