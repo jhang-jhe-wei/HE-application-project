@@ -1,3 +1,4 @@
 # frozen_string_literal: true
 
-json.array! @courses.map { |course| build_json(course) }.flatten
+json.nextPage @courses.next_page
+json.courses @courses.map { |course| build_json(course) }.flatten

@@ -24,7 +24,7 @@ const CourseSearchResultItem = (course: CourseState) => {
   }
 
   return(
-    <div className="flex justify-between p-2 mb-2 bg-gray-100">
+    <li className="flex justify-between p-2 mb-2 bg-gray-100">
       <div className="max-w-[80%]">
         <p className="truncate">
           { className }
@@ -48,7 +48,7 @@ const CourseSearchResultItem = (course: CourseState) => {
       >
         +
       </button>
-    </div>
+    </li>
   )
 
 }
