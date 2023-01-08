@@ -6,11 +6,5 @@ class CoursesController < ApplicationController
     else
       @courses = @courses.none
     end
-
-    render json: @courses.as_json(include: {
-      groups: {
-        include: :events
-      }
-    })
   end
 end

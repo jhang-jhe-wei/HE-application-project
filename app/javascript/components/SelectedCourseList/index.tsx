@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import CourseContext from '../courseContext';
-import SelectedCoursesListItem from './SelectedCourseListItem';
+import CourseContext from '../../courseContext';
+import SelectedCoursesListItem from './Item';
 
 const SelectedCoursesList = () => {
   const [state, ] = useContext(CourseContext)
