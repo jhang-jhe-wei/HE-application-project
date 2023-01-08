@@ -19,7 +19,7 @@ const CourseSearchResultItem = (course: CourseState) => {
           dispatch({ type: ReducerActions.SET_SELECTED_COURSE_LIST, payload: response.data })
       })
       .catch((error) => {
-        dispatch({ type: ReducerActions.SET_ALERT_TEXT, payload: error })
+        dispatch({ type: ReducerActions.SET_ALERT_TEXT, payload: error.response.data })
       })
   }
 

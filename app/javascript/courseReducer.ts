@@ -24,7 +24,7 @@ export interface RegisteredCourseRecordState {
 export interface ReducerStateProps {
   selectedCourseList: RegisteredCourseRecordState[];
   hoveredCourse: CourseState;
-  alertText: string;
+  alertTexts: string[];
 }
 
 export const ReducerActions = {
@@ -36,13 +36,13 @@ export const ReducerActions = {
 export type ReducerActionProps =
   | { type: typeof ReducerActions.SET_SELECTED_COURSE_LIST; payload: RegisteredCourseRecordState[] }
   | { type: typeof ReducerActions.SET_HOVERED_COURSE; payload: CourseState }
-  | { type: typeof ReducerActions.SET_ALERT_TEXT; payload: string }
+  | { type: typeof ReducerActions.SET_ALERT_TEXT; payload: string[] }
 
 export const initReducer = (): ReducerStateProps => {
   return {
     selectedCourseList: [],
     hoveredCourse: undefined,
-    alertText: 'Has conflict with OOS2'
+    alertTexts: []
   }
 }
 
@@ -63,7 +63,7 @@ const Reducer = (state: ReducerStateProps, action: ReducerActionProps) => {
     case ReducerActions.SET_ALERT_TEXT: {
       return {
         ...state,
-        alertText: action.payload
+        alertTexts: action.payload
       };
     }
     default:

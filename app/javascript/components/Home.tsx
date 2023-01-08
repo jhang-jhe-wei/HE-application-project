@@ -18,7 +18,7 @@ const Home = () => {
           dispatch({ type: ReducerActions.SET_SELECTED_COURSE_LIST, payload: response.data })
         })
         .catch((error) => {
-          dispatch({ type: ReducerActions.SET_ALERT_TEXT, payload: error })
+          dispatch({ type: ReducerActions.SET_ALERT_TEXT, payload: error.response.data })
         })
     }
     fetchSelectedCourseList()
@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <CourseContext.Provider value={[state, dispatch]}>
-      { state.alertText && <Alert text={state.alertText}/> }
+      <Alert/>
       <div className="container py-12 mx-auto">
         <div className="grid grid-cols-4 gap-4">
           <div className="flex flex-col justify-between col-span-1">

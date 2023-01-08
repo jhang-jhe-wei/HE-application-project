@@ -18,7 +18,7 @@ class CourseRegisterRecordsController < ApplicationController
       @course_register_records = current_user.course_register_records.all
       render :index, status: :created, location: course_register_record
     else
-      render json: course_register_record.errors, status: :unprocessable_entity
+      render json: course_register_record.errors.full_messages, status: :unprocessable_entity
     end
   end
 
