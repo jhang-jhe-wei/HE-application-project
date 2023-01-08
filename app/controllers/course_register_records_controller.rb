@@ -13,13 +13,15 @@ class CourseRegisterRecordsController < ApplicationController
   # POST /course_register_records.json
   def create
     course_register_record = current_user.course_register_records.build(course_register_record_params)
+    CourseRegisterRecordService
+      .new(course_register_record, current_user.course_register_records)
+      .check_events_conflict!
 
-    if course_register_record.save
-      @course_register_records = current_user.course_register_records.all
-      render :index, status: :created, location: course_register_record
-    else
-      render json: course_register_record.errors, status: :unprocessable_entity
-    end
+    course_register_record.save!
+    @course_register_records = current_user.course_register_records.all
+    render :index, status: :created, location: course_register_record
+  rescue StandardError, ActiveRecord::RecordInvalid => e
+    render json: [e], status: :unprocessable_entity
   end
 
   # DELETE /course_register_records/1

@@ -6,6 +6,7 @@ import SelectedCourseList from './SelectedCourseList';
 import CourseContext from '../courseContext';
 import { default as CourseReducer, initReducer, ReducerActions, RegisteredCourseRecordState } from '../courseReducer';
 import { default as Axios } from 'axios';
+import Alert from './TimeTable/Alert';
 
 const Home = () => {
   const [state, dispatch] = useReducer(CourseReducer, 0, initReducer)
@@ -17,7 +18,7 @@ const Home = () => {
           dispatch({ type: ReducerActions.SET_SELECTED_COURSE_LIST, payload: response.data })
         })
         .catch((error) => {
-          console.log(error);
+          dispatch({ type: ReducerActions.SET_ALERT_TEXT, payload: error.response.data })
         })
     }
     fetchSelectedCourseList()
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <CourseContext.Provider value={[state, dispatch]}>
+      <Alert/>
       <div className="container py-12 mx-auto">
         <div className="grid grid-cols-4 gap-4">
           <div className="flex flex-col justify-between col-span-1">

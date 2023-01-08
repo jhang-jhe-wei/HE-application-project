@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_03_151040) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_08_212201) do
   create_table "course_register_records", force: :cascade do |t|
     t.string "registerable_type", null: false
     t.integer "registerable_id", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_151040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["registerable_type", "registerable_id"], name: "index_course_register_records_on_registerable"
+    t.index ["user_id", "registerable_id", "registerable_type"], name: "idx_course_register_records_on_user_id_and_registerable", unique: true
     t.index ["user_id"], name: "index_course_register_records_on_user_id"
   end
 

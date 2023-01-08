@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import Reducer, { CourseState, ReducerActions } from "../../courseReducer";
+import { CourseState, ReducerActions } from "../../courseReducer";
 import GroupIcon from "../../icons/group";
 import { default as Axios } from 'axios';
 import CourseContext from "../../courseContext";
@@ -19,7 +19,7 @@ const CourseSearchResultItem = (course: CourseState) => {
           dispatch({ type: ReducerActions.SET_SELECTED_COURSE_LIST, payload: response.data })
       })
       .catch((error) => {
-        console.log(error);
+        dispatch({ type: ReducerActions.SET_ALERT_TEXT, payload: error.response.data })
       })
   }
 
