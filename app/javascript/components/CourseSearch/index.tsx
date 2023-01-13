@@ -67,7 +67,7 @@ const CourseSearch = () => {
         type="Search"
         placeholder="Start typing to search HS courses..."
         onChange={(e) => setSearchText(e.target.value)}
-        className="block w-full p-4 placeholder-gray-400 border-2 border-gray-400 rounded-[12px] bg-white sm:text-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        className="block w-full p-4 mt-6 placeholder-gray-400 border-2 border-gray-400 rounded-[12px] bg-white sm:text-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
       />
       <div className="p-4 pr-2 mt-4 overflow-y-auto bg-white rounded-[12px] h-96" ref={scrollParentRef}>
         <InfiniteScroll

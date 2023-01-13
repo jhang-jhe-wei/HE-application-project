@@ -11,6 +11,7 @@ import Alert from './TimeTable/Alert';
 import HochschuleEsslingenLogo from "../icons/hs-logo";
 import GroupIcon from "../icons/group";
 import DeleteIcon from "../icons/delete";
+import NavBar from "./NavBar";
 
 const Home = () => {
   const [state, dispatch] = useReducer(CourseReducer, 0, initReducer)
@@ -30,19 +31,14 @@ const Home = () => {
 
   return (
     <CourseContext.Provider value={[state, dispatch]}>
+      <NavBar/>
       <Alert/>
       <div className="container mx-auto width">
         <div className="grid grid-cols-4 gap-6 max-h-full">
 
           <div className="pl-4 flex flex-col justify-between col-span-1 max-h-full">
 
-            <div className="pt-4 pb-4">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/HochschuleEsslingen_Logo_4c_DE.svg" className="h-20"/>
-            </div>
-
             <CourseSearch/>
-
-            <h1 className="pt-4 pb-2 text-lg text-gray-600">My Courses</h1>
 
             <SelectedCourseList/>
           </div>
