@@ -1,16 +1,16 @@
 import React, {useEffect, useState, useCallback, useRef} from 'react';
-import { default as Axios } from 'axios';
-import { CourseState } from '../../courseReducer';
-import { default as ResultItem } from './Item';
+import {default as Axios} from 'axios';
+import {CourseState} from '../../courseReducer';
+import {default as ResultItem} from './Item';
 import InfiniteScroll from 'react-infinite-scroller';
 
 interface FetchCoursesResponseState {
   courses: CourseState[];
-  nextPage: null| number;
+  nextPage: null | number;
 }
 
 const fetchCourses = async (q: string, page: number) => {
-  return Axios.get<FetchCoursesResponseState>(`/courses.json`, { params: { q, page } })
+  return Axios.get<FetchCoursesResponseState>(`/courses.json`, {params: {q, page}})
 }
 
 const CourseSearch = () => {
@@ -34,7 +34,7 @@ const CourseSearch = () => {
       setFetching(true);
       fetchCourses(searchText, nextPage)
         .then((response) => {
-          const { courses: newCourses, nextPage } = response.data
+          const {courses: newCourses, nextPage} = response.data
           setCourses([...courses, ...newCourses])
           setNextPage(nextPage)
         })
@@ -47,7 +47,7 @@ const CourseSearch = () => {
   useEffect(() => {
     fetchCourses(searchText, 1)
       .then((response) => {
-        const { courses: newCourses, nextPage } = response.data
+        const {courses: newCourses, nextPage} = response.data
         setCourses(newCourses)
         setNextPage(nextPage)
       })
@@ -65,9 +65,9 @@ const CourseSearch = () => {
     <div>
       <input
         type="Search"
-        placeholder="Search"
+        placeholder="Start typing to search"
         onChange={(e) => setSearchText(e.target.value)}
-        className="block w-full p-4 placeholder-gray-400 border border-gray-100 rounded-md bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
+        className="block w-full p-4 placeholder-gray-400 border-white rounded-md bg-white sm:text-md shadow-[0_0px_200px_10px_rgba(0,0,0,0.3)] focus:border-blue-500 focus:shadow-blue-400"
       />
       <div className="p-4 pr-2 mt-4 overflow-y-auto bg-white rounded-md h-96" ref={scrollParentRef}>
         <InfiniteScroll
@@ -77,11 +77,11 @@ const CourseSearch = () => {
           useWindow={false}
           getScrollParent={() => scrollParentRef.current}
         >
-          <ul className="max-h-full pr-2">
+          <ul className="max-h-full pr-2 rounded-md">
             {
               courses.map(course => (
                 <ResultItem key={`${course.type}-${course.id}`} {...course}/>
-                ))
+              ))
             }
           </ul>
         </InfiniteScroll>

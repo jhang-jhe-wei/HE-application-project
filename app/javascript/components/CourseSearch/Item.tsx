@@ -3,6 +3,7 @@ import { CourseState, ReducerActions } from "../../courseReducer";
 import GroupIcon from "../../icons/group";
 import { default as Axios } from 'axios';
 import CourseContext from "../../courseContext";
+import AddIcon from "../../icons/add";
 
 const CourseSearchResultItem = (course: CourseState) => {
   const [, dispatch] = useContext(CourseContext)
@@ -24,13 +25,13 @@ const CourseSearchResultItem = (course: CourseState) => {
   }
 
   return(
-    <li className="flex justify-between p-2 mb-2 bg-gray-100">
+    <li className="flex justify-between p-2 mb-2 bg-gray-100 rounded-md">
       <div className="max-w-[80%]">
         <p className="truncate">
           { className }
         </p>
         <div>
-          <p className="flex items-center text-sm">
+          <p className="flex items-center text-sm rounded-md">
             <GroupIcon/>
             <span className="ml-1">
               { groupName }
@@ -39,14 +40,14 @@ const CourseSearchResultItem = (course: CourseState) => {
         </div>
       </div>
       <button
-        className="px-4 py-2 text-lg bg-gray-200 hover:bg-gray-300"
+        className="px-4 py-2 text-lg bg-blue-400 hover:bg-blue-500 rounded-md"
         onClick={() => {
           postCourseRegisteration(id, type);
         }}
         onMouseEnter={()=> dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: course })}
         onMouseLeave={()=> dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: undefined })}
       >
-        +
+        <AddIcon/>
       </button>
     </li>
   )
