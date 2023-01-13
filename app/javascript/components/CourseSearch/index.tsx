@@ -65,11 +65,11 @@ const CourseSearch = () => {
     <div>
       <input
         type="Search"
-        placeholder="Start typing to search"
+        placeholder="Start typing to search HS courses..."
         onChange={(e) => setSearchText(e.target.value)}
-        className="block w-full p-4 placeholder-gray-400 border-white rounded-md bg-white sm:text-md shadow-[0_0px_200px_10px_rgba(0,0,0,0.3)] focus:border-blue-500 focus:shadow-blue-400"
+        className="block w-full p-4 placeholder-gray-400 border-2 border-gray-400 rounded-[12px] bg-white sm:text-md focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
       />
-      <div className="p-4 pr-2 mt-4 overflow-y-auto bg-white rounded-md h-96" ref={scrollParentRef}>
+      <div className="p-4 pr-2 mt-4 overflow-y-auto bg-white rounded-[12px] h-96" ref={scrollParentRef}>
         <InfiniteScroll
           loadMore={fetchMoreCourses}
           hasMore={!!nextPage}

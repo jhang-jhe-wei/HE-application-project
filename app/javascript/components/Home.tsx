@@ -42,7 +42,7 @@ const Home = () => {
 
             <CourseSearch/>
 
-            <h1 className="pt-4 pb-2 text-lg">My Courses</h1>
+            <h1 className="pt-4 pb-2 text-lg text-gray-600">My Courses</h1>
 
             <SelectedCourseList/>
           </div>
