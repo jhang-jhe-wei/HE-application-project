@@ -7,10 +7,6 @@ import CourseContext from '../courseContext';
 import {default as CourseReducer, initReducer, ReducerActions, RegisteredCourseRecordState} from '../courseReducer';
 import {default as Axios} from 'axios';
 import Alert from './TimeTable/Alert';
-
-import HochschuleEsslingenLogo from "../icons/hs-logo";
-import GroupIcon from "../icons/group";
-import DeleteIcon from "../icons/delete";
 import NavBar from "./NavBar";
 
 const Home = () => {
