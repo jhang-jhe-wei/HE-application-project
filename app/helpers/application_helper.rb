@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+
+  def is_active?(page, link)
+    if page == link
+      "active"
+    else
+      ""
+    end
+  end
+
   def build_events_json(group)
     group.events.map do |event|
       {

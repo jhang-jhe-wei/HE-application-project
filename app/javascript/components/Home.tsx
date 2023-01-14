@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <CourseContext.Provider value={[state, dispatch]}>
-      <NavBar/>
+      <NavBar activePage={"index"}/>
       <Alert/>
       <div className="container mx-auto width">
         <div className="grid grid-cols-4 gap-6 max-h-full">
@@ -50,3 +50,21 @@ const Home = () => {
 }
 
 mountToWindow(Home, 'Home');
+
+const CoursesPage = () => {
+  return (
+    <div>
+      <NavBar activePage={"courses_list"}/>
+      <div className="container mx-auto width">
+        <div className="pt-6">
+
+          Content
+
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+mountToWindow(CoursesPage, 'courses_list');

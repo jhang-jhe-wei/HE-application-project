@@ -8,7 +8,7 @@ export const TIME_LIST = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 2
 const TimeTable = () => {
 
   return (
-    <div className="flex flex-col h-full pt-6">
+    <div className="flex flex-col h-full pt-6 mr-4">
       <div className="flex flex-col flex-auto overflow-auto bg-white isolate rounded-[12px]">
         <div className="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
           <Header/>
