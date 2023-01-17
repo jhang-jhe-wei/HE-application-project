@@ -1,6 +1,7 @@
 import React from 'react';
 import UserIcon from "../../icons/user";
 import LogOutIcon from "../../icons/logout";
+import HSLogo from '../../images/HS-logo.png';
 
 const NavBar = ({activePage}) => {
   // if {activePage} is "index", then the index page is active
@@ -14,7 +15,7 @@ const NavBar = ({activePage}) => {
           <div className="flex items-center">
 
             <a href="/" className="flex items-center">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/HochschuleEsslingen_Logo_4c_DE.svg"
+              <img src={ HSLogo }
                    className="h-10" alt="Hochschule Esslingen"/>
             </a>
 
