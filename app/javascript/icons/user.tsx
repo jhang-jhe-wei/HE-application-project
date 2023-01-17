@@ -2,8 +2,7 @@ import React from "react";
 
 const UserIcon = () => {
   return (
-
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.8438"
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="39.8438"
          height="39.8633">
       <g>
         <rect height="39.8633" opacity="0" width="39.8438" x="0" y="0"/>
@@ -12,8 +11,6 @@ const UserIcon = () => {
           fill="#888899"/>
       </g>
     </svg>
-
-
   )
 }
 

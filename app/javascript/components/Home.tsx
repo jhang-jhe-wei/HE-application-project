@@ -30,36 +30,16 @@ const Home = () => {
     <CourseContext.Provider value={[state, dispatch]}>
       <NavBar activePage={"index"}/>
       <div className="mt-[4.5rem] mb-[-4.5rem] ">
-
-        <style jsx>
-          {`
-            .custom-full-height {
-              max-height: calc(100vh - 4.5rem - 1.5rem);
-            }
-
-            .custom-fixed-scroll {
-              // position: fixed;
-            }
-
-            .alert-stay-on-top {
-              position: fixed;
-              top: 4.5rem;
-              width: 100%;
-              z-index: 100;
-            }
-          `}
-        </style>
-
         <Alert/>
         <div className="container mx-auto width">
-          <div id="grid" className="custom-full-height grid grid-cols-4 gap-6">
+          <div id="grid" className="full-page-max-height grid grid-cols-4 gap-6">
 
             <div id="left-panel" className="col-span-1 flex flex-col">
               <CourseSearch contentSize={"small"}/>
               <SelectedCourseList/>
             </div>
 
-            <div id="timetable" className="col-span-3 custom-fixed-scroll">
+            <div id="timetable" className="col-span-3">
               <TimeTable/>
             </div>
 
@@ -92,15 +72,8 @@ const CoursesPage = () => {
 
   return (
     <div>
-      <style jsx>
-        {`
-          .custom-full-height {
-            max-height: calc(100vh - 4.5rem - 1.5rem);
-          }
-        `}
-      </style>
       <NavBar activePage={"courses_list"}/>
-      <div className="custom-full-height container mx-auto width">
+      <div className="full-page-max-height container mx-auto width">
         <div className="pt-6 pb-20">
           <CourseFullList/>
         </div>

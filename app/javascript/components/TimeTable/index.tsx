@@ -9,7 +9,7 @@ const TimeTable = () => {
 
   return (
     <div>
-      <div className="custom-full-height flex flex-col h-full pt-6">
+      <div className="full-page-max-height flex flex-col h-full pt-6">
         <div className="flex flex-col flex-auto overflow-auto bg-white isolate rounded-[12px]">
           <div className="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
             <Header/>

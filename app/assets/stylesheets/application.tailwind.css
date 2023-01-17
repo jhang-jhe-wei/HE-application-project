@@ -7,3 +7,19 @@ input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s;
 }
+
+/* Used in SelectedCourseList/index.tsx */
+.selected-course-list-height {
+  max-height: calc(50vh - 4.5rem - 1.5rem - 2.5rem);
+}
+
+/* Used in index.html.erb and courses_list.html.erb*/
+.full-page-height {
+  height: calc(100vh - 4.5rem - 1.5rem);
+  overflow-y: hidden;
+}
+
+/* Used in TimeTable/index.tsx and Home.tsx */
+.full-page-max-height {
+  max-height: calc(100vh - 4.5rem - 1.5rem);
+}

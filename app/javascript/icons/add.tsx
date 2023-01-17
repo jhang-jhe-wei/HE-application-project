@@ -2,7 +2,7 @@ import React from "react";
 
 const AddIcon = () => {
   return (
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16.1133"
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="16.1133"
          height="16.123">
       <g>
         <rect height="16.123" opacity="0" width="16.1133" x="0" y="0"/>
@@ -11,7 +11,6 @@ const AddIcon = () => {
           fill="#ffffff"/>
       </g>
     </svg>
-
   )
 }
 

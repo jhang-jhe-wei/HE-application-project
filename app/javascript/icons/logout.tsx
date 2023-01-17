@@ -2,9 +2,7 @@ import React from "react";
 
 const LogOutIcon = () => {
   return (
-
-
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22.666"
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="22.666"
          height="20.9473">
       <g>
         <rect height="20.9473" opacity="0" width="22.666" x="0" y="0"/>
@@ -13,8 +11,6 @@ const LogOutIcon = () => {
           fill="#ff375f"/>
       </g>
     </svg>
-
-
   )
 }
 

@@ -8,39 +8,24 @@ const NavBar = ({activePage}) => {
 
   return (
     <div>
-      <style jsx>{`
-        .active {
-          color: rgb(58, 97, 215);
-          font-weight: bold;
-        }
-
-        .nav-bar-scroll-lock {
-          position: fixed;
-          top: 0;
-          width: 100%;
-          height: 4.5rem;
-          z-index: 100;
-        }
-
-      `}</style>
-      <div className="flex justify-center p-4 bg-white nav-bar-scroll-lock">
+      <div className="flex justify-center p-4 bg-white fixed top-0 w-full h-[4.5rem] z-100">
 
         <div className="flex items-center justify-between w-full max-w-7xl">
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/HochschuleEsslingen_Logo_4c_DE.svg"
-                   className="h-10"/>
+                   className="h-10" alt="Hochschule Esslingen"/>
             </a>
 
             <div className=" ml-10 flex items-center">
             <span className="text-xl">
-              <a href="/" className={activePage === "index" ? "active" : ""}>Timetable</a>
+              <a href="/" className={activePage === "index" ? "text-blue-600 font-bold" : ""}>Timetable</a>
             </span>
             </div>
 
             <div className=" ml-10 flex items-center">
             <span className="text-xl">
-              <a href="/courses_list" className={activePage === "courses_list" ? "active" : ""}>Courses</a>
+              <a href="/courses_list" className={activePage === "courses_list" ? "text-blue-600 font-bold" : ""}>Courses</a>
             </span>
             </div>
 

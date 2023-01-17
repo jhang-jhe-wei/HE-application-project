@@ -67,7 +67,7 @@ const CourseSearch = ({contentSize}) => {
 
   return (
     <div className="">
-      <style jsx>
+      <style>
         {`
           .custom-small-height {
             height: 26.55rem;
