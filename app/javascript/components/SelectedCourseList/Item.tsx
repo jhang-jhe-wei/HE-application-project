@@ -26,7 +26,7 @@ const SelectedCoursesListItem = (props: RegisteredCourseRecordState) => {
 
   return (
     <div className="flex justify-between p-2 mb-2 bg-gray-100 rounded-md">
-      <div className="max-w-[80%]">
+      <div id="dsfgag" className="max-w-[80%] pr-2">
         <p className="truncate">
           { className }
         </p>
