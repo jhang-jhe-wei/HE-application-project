@@ -12,34 +12,33 @@ const NavBar = ({activePage}) => {
 
         <div className="flex items-center justify-between w-full max-w-7xl">
           <div className="flex items-center">
+
             <a href="/" className="flex items-center">
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/HochschuleEsslingen_Logo_4c_DE.svg"
                    className="h-10" alt="Hochschule Esslingen"/>
             </a>
 
             <div className=" ml-10 flex items-center">
-            <span className="text-xl">
-              <a href="/" className={activePage === "index" ? "text-blue-600 font-bold" : ""}>Timetable</a>
-            </span>
+              <span className="text-lg">
+                <a href="/" className={activePage === "index" ? "text-blue-600 font-semibold" : ""}>Timetable</a>
+              </span>
             </div>
 
             <div className=" ml-10 flex items-center">
-            <span className="text-xl">
-              <a href="/courses_list" className={activePage === "courses_list" ? "text-blue-600 font-bold" : ""}>Courses</a>
-            </span>
+              <span className="text-lg">
+                <a href="/courses_list"
+                   className={activePage === "courses_list" ? "text-blue-600 font-semibold" : ""}>Courses</a>
+              </span>
             </div>
 
           </div>
-
-
         </div>
 
         <div className="mr-4 flex items-center">
 
-
-        <span className="text-l mr-4">
-          example00
-        </span>
+          <span className="text-l mr-4">
+            example00
+          </span>
 
           <div className="flex items-center justify-center w-10 h-10 mr-2 text-white rounded-full">
             <UserIcon/>
@@ -47,26 +46,28 @@ const NavBar = ({activePage}) => {
 
         </div>
 
-        <div className="mr-4 flex items-center">
+        <div className="mr-4 flex items-center fill-red-500 hover:fill-red-900 text-red-500 hover:text-red-900">
+          <a href="#sign_out" onClick={() => {
+            fetch('/users/sign_out', {method: 'DELETE'})
+              .then(() => {
+                // TODO: redirect the user to the login page or do something else
+                window.location.href = '/';
+              });
+          }}>
+            <div className="mr-4 flex items-center">
+              Logout
+            </div>
 
-          <div className="mr-4 flex items-center text-red-500 hover:text-red-900 hover:text-bold">
-            <a href="#sign_out" onClick={() => {
-              fetch('/users/sign_out', {method: 'DELETE'})
-                .then(() => {
-                  // redirect the user to the login page or do something else
-                  window.location.href = '/';
-                });
-            }}>Logout</a>
-          </div>
+          </a>
 
           <div className="flex items-center justify-center">
             <LogOutIcon/>
           </div>
 
         </div>
+
       </div>
     </div>
-
   )
 }
 

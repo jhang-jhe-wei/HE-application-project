@@ -10,7 +10,7 @@ const SelectedCoursesList = () => {
   if (state.selectedCourseList.length === 0) {
     return (
       <div id="selected-course-list">
-        <h1 className="mb-2 mt-4 text-lg text-gray-600 h-8">My Courses</h1>
+        <h1 className="mb-2 mt-4 h-8 text-gray-700 uppercase">My Courses</h1>
         <div className="grow p-4 pr-2 bg-white rounded-[12px] selected-course-list-height h-[24rem]">
           <div className="max-h-full pr-2 overflow-y-auto">
             <p className="text-gray-500">No courses selected yet</p>
@@ -22,7 +22,7 @@ const SelectedCoursesList = () => {
 
   return (
     <div id="selected-course-list">
-      <h1 className="mb-2 mt-4 text-lg text-gray-600 h-8">My Courses</h1>
+      <h1 className="mb-2 mt-4 h-8 text-gray-700 uppercase">My Courses</h1>
       <div className="p-4 pr-2 bg-white rounded-[12px] selected-course-list-height h-[24rem]">
         <div className="max-h-full pr-2 overflow-y-auto">
           {
