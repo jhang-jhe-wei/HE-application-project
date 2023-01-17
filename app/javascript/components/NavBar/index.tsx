@@ -9,7 +9,7 @@ const NavBar = ({activePage}) => {
 
   return (
     <div>
-      <div className="flex justify-center p-4 bg-white fixed top-0 w-full h-[4.5rem] z-100">
+      <div className="flex justify-center p-4 bg-white fixed top-0 w-full h-[4.5rem] z-50">
 
         <div className="flex items-center justify-between w-full max-w-7xl">
           <div className="flex items-center">
