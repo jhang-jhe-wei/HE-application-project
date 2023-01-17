@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import Header from './Header'
 import HorizontalLines from './HorizontalLines';
 import VerticalLines from './VerticalLines';
@@ -8,22 +8,24 @@ export const TIME_LIST = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 2
 const TimeTable = () => {
 
   return (
-    <div className="flex flex-col h-full pt-6 mr-4">
-      <div className="flex flex-col flex-auto overflow-auto bg-white isolate rounded-[12px]">
-        <div className="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
-          <Header/>
+    <div>
+      <div className="custom-full-height flex flex-col h-full pt-6">
+        <div className="flex flex-col flex-auto overflow-auto bg-white isolate rounded-[12px]">
+          <div className="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
+            <Header/>
 
-          <div className="flex flex-auto">
-            <div className="sticky left-0 z-10 flex-none bg-white w-14 ring-1 ring-gray-100" />
-            <div className="flex-auto grid grid-cols-1 grid-rows-1">
-              {/* Horizontal lines */}
-              <HorizontalLines/>
+            <div className="flex flex-auto">
+              <div className="sticky left-0 z-10 flex-none bg-white w-14 ring-1 ring-gray-100"/>
+              <div className="flex-auto grid grid-cols-1 grid-rows-1">
+                {/* Horizontal lines */}
+                <HorizontalLines/>
 
-              {/* Vertical lines */}
-              <VerticalLines/>
+                {/* Vertical lines */}
+                <VerticalLines/>
 
-              {/* Events */}
-              <Events/>
+                {/* Events */}
+                <Events/>
+              </div>
             </div>
           </div>
         </div>

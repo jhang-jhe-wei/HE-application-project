@@ -7,7 +7,7 @@ const Alert = () => {
   const [state, dispatch] = useContext(CourseContext)
   if (state.alertTexts.length === 0) return;
   return (
-    <div className="flex justify-center p-4 text-yellow-700 bg-yellow-100" role="alert">
+    <div className="alert-stay-on-top flex justify-center p-4 text-yellow-700 bg-yellow-100" role="alert">
       <InfoIcon/>
       <span className="sr-only">Info</span>
       <ul className="ml-3 text-sm font-medium">
