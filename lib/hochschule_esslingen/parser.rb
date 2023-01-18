@@ -7,11 +7,9 @@ module HochschuleEsslingen
       state=wsearchv&
       search=1&
       subdir=veranstaltung&
-      choice.veranstaltung.verartid=y&
-      veranstaltung.verartid=9&
       veranstaltung.semester=20222&
       P_start=0&
-      P_anzahl=10&
+      P_anzahl=50&
       P.sort=&
       _form=display
     URL
