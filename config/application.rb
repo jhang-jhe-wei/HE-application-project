@@ -35,6 +35,6 @@ module CourseSimulator
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    Rails.logger = Logger.new($stdout) if defined?(Rails) && Rails.env.development?
+    config.logger = ActiveSupport::Logger.new($stdout)
   end
 end
