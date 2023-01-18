@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {GroupEventState} from '../Reducer';
 import classNames from 'classnames';
+import Modal from 'react-modal';
 
 const calculateGridRowValue = (event: GroupEventState) => {
   const position = Math.floor((event.startedMinuteAt - 7 * 60) / 5) + 1
@@ -28,6 +29,15 @@ interface EventProps {
   hasConflict?: boolean;
 }
 
+const customStyles = {
+  overlay: {
+    zIndex: 100
+  },
+  content: {
+    inset: '10% 20%',
+  },
+};
+
 const Event = (props: EventProps) => {
   const {
     event,
@@ -36,25 +46,51 @@ const Event = (props: EventProps) => {
     hasConflict = false
   } = props;
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
-    <li
-      className={classNames('relative flex mt-px', {
-      'animate-[scale-x_1s_linear_infinite]': focus
-    })}
-    style={{
-      gridRow: `${calculateGridRowValue(event)}`,
-      gridColumnStart: `${calculateColStartValue(event.wday)}` }
-    }>
-      <a
-        href="#"
-        className={classNames("absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100 h-full", { 'bg-red-300': hasConflict })}
+    <>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Course Detail"
       >
-        <p className="order-1 font-semibold text-blue-700 break-words">{ courseName }</p>
-        <p className="text-blue-500 break-words group-hover:text-blue-700">
-          { calculateTimeDuration(event) }
-        </p>
-      </a>
-    </li>
+        <button onClick={closeModal}>close</button>
+        <p>{JSON.stringify(props)}</p>
+      </Modal>
+
+      <li
+        className={classNames('relative flex mt-px', {
+          'animate-[scale-x_1s_linear_infinite]': focus
+        })}
+        style={{
+          gridRow: `${calculateGridRowValue(event)}`,
+            gridColumnStart: `${calculateColStartValue(event.wday)}` }
+        }
+        onClick={() => {
+          openModal()
+        }}
+      >
+          <a
+            href="#"
+            className={classNames("absolute flex flex-col p-2 overflow-y-auto text-xs rounded-lg inset-x-2 group bg-blue-50 leading-5 hover:bg-blue-100 h-full", { 'bg-red-300': hasConflict })}
+          >
+            <p className="order-1 font-semibold text-blue-700 break-words">{ courseName }</p>
+            <p className="text-blue-500 break-words group-hover:text-blue-700">
+              { calculateTimeDuration(event) }
+            </p>
+          </a>
+        </li>
+
+      </>
   )
 }
 
