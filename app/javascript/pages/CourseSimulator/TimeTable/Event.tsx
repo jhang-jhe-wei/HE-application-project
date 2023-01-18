@@ -64,7 +64,7 @@ const Event = (props: EventProps) => {
         contentLabel="Course Detail"
       >
         <button onClick={closeModal}>close</button>
-        <p>{JSON.stringify(props)}</p>
+        <p className="break-words">{JSON.stringify(event)}</p>
       </Modal>
 
       <li

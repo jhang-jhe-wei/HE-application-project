@@ -4,6 +4,11 @@ export interface GroupEventState {
   endedMinuteAt: number;
   startedMinuteAt: number;
   place: string;
+  csi_url: string;
+  place_url: string;
+  frequency: string;
+  started_date_on: Date;
+  ended_date_on: Date;
 }
 
 export interface CourseState {
