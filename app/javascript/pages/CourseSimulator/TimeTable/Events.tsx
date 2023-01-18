@@ -6,12 +6,12 @@ import {GroupEventState} from '../Reducer';
 
 const colipseEvents = (newEvent: GroupEventState, currentEvents: GroupEventState[]): boolean => {
   const result = currentEvents.find(event => {
+    if((newEvent.wday !== event.wday)) return false;
     if(
-      (newEvent.wday === event.wday) &&
-      (
-        (newEvent.startedMinuteAt >= event.startedMinuteAt && newEvent.startedMinuteAt < event.endedMinuteAt) ||
-        (newEvent.endedMinuteAt > event.startedMinuteAt && newEvent.endedMinuteAt <= event.endedMinuteAt)
-      )) return true
+      (newEvent.startedMinuteAt >= event.startedMinuteAt && newEvent.startedMinuteAt < event.endedMinuteAt) ||
+      (newEvent.endedMinuteAt > event.startedMinuteAt && newEvent.endedMinuteAt <= event.endedMinuteAt) ||
+      (newEvent.startedMinuteAt <= event.startedMinuteAt && newEvent.endedMinuteAt >= event.endedMinuteAt)
+    ) return true
     return false;
   })
   if(result) return true

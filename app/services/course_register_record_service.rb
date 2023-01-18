@@ -23,6 +23,7 @@ class CourseRegisterRecordService
 
   private
 
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity
   def conflict?(new_event, events)
     events.find do |event|
       return false unless new_event.wday == event.wday
@@ -30,10 +31,14 @@ class CourseRegisterRecordService
       (
         new_event.started_minute_at >= event.started_minute_at &&
         new_event.started_minute_at < event.ended_minute_at
-      ) or (
+      ) || (
         new_event.ended_minute_at > event.started_minute_at &&
         new_event.ended_minute_at <= event.ended_minute_at
+      ) || (
+        new_event.started_minute_at <= event.started_minute_at &&
+        new_event.ended_minute_at >= event.ended_minute_at
       )
     end
   end
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity
 end
