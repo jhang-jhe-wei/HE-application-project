@@ -21,6 +21,7 @@ module HochschuleEsslingen
       Capybara.default_max_wait_time = 1
       Capybara.default_driver = :selenium_chrome_headless
       @b = Capybara.current_session
+      @logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
     end
 
     def parse
@@ -29,7 +30,13 @@ module HochschuleEsslingen
 
       data = class_urls.map do |class_url|
         Rails.logger.info("Parsing #{class_url}")
-        extract_class_data_on(class_url)
+
+        begin
+          extract_class_data_on(class_url)
+        rescue StandardError => e
+          @logger.fatal("Parse Error in #{class_url}, error: #{e}")
+          next
+        end
       end
       cache_json_to_file(COURSES_PATH, data.to_json)
       Capybara.current_session.driver.quit
