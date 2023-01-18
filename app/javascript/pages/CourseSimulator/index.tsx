@@ -1,16 +1,15 @@
 import React, {useReducer, useEffect} from 'react';
-import {mountToWindow} from '../helpers/helper';
+import {mountToWindow} from '../../helpers/helper';
 import CourseSearch from './CourseSearch';
 import TimeTable from './TimeTable';
 import SelectedCourseList from './SelectedCourseList';
-import CourseContext from '../courseContext';
-import {default as CourseReducer, initReducer, ReducerActions, RegisteredCourseRecordState} from '../courseReducer';
+import CourseContext from './Context';
+import {default as CourseReducer, initReducer, ReducerActions, RegisteredCourseRecordState} from './Reducer';
 import {default as Axios} from 'axios';
 import Alert from './TimeTable/Alert';
-import NavBar from "./NavBar";
 import CourseFullList from "./CourseFullList";
 
-const Home = () => {
+const CourseSimulator = () => {
   const [state, dispatch] = useReducer(CourseReducer, 0, initReducer)
 
   useEffect(() => {
@@ -28,13 +27,12 @@ const Home = () => {
 
   return (
     <CourseContext.Provider value={[state, dispatch]}>
-      <NavBar activePage={"index"}/>
       <div className="mt-[4.5rem] mb-[-4.5rem] ">
         <Alert/>
         <div className="container mx-auto width">
           <div id="grid" className="full-page-max-height grid grid-cols-4 gap-6">
 
-            <div id="left-panel" className="col-span-1 flex flex-col">
+            <div id="left-panel" className="flex flex-col col-span-1">
               <CourseSearch contentSize={"small"}/>
               <SelectedCourseList/>
             </div>
@@ -50,11 +48,11 @@ const Home = () => {
   )
 }
 
-mountToWindow(Home, 'Home');
+mountToWindow(CourseSimulator, 'CourseSimulator');
 
 const CoursesPage = () => {
 
-  const [state, dispatch] = useReducer(CourseReducer, 0, initReducer)
+  const [_state, dispatch] = useReducer(CourseReducer, 0, initReducer)
 
   useEffect(() => {
     const fetchSelectedCourseList = async () => {
@@ -72,8 +70,7 @@ const CoursesPage = () => {
 
   return (
     <div>
-      <NavBar activePage={"courses_list"}/>
-      <div className="full-page-max-height container mx-auto width">
+      <div className="container mx-auto full-page-max-height width">
         <div className="pt-6 pb-20">
           <CourseFullList/>
         </div>

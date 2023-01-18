@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import CourseContext from '../../courseContext';
-import {ReducerActions} from '../../courseReducer';
-import InfoIcon from "../../icons/info";
+import CourseContext from '../Context';
+import {ReducerActions} from '../Reducer';
+import InfoIcon from "../../../icons/info";
 
 const Alert = () => {
   const [state, dispatch] = useContext(CourseContext)

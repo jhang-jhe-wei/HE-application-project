@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useCallback, useRef} from 'react';
 import {default as Axios} from 'axios';
-import {CourseState} from '../../courseReducer';
+import {CourseState} from '../Reducer';
 import {default as ResultItem} from './Item';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -72,7 +72,7 @@ const CourseSearch = ({contentSize}) => {
           .custom-small-height {
             height: 26.55rem;
             max-height: calc(50vh - 4.5rem - 3rem);
-            
+
             // height: calc(100vh - 4.5rem - 1.5rem - 30rem - 4rem - 26rem);
             // max-height: calc(100% - 4.5rem - 1.5rem - 24rem - 2rem - 10rem);
           }

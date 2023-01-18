@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
-import { CourseState, ReducerActions } from "../../courseReducer";
-import GroupIcon from "../../icons/group";
+import { CourseState, ReducerActions } from "../Reducer";
+import GroupIcon from "../../../icons/group";
 import { default as Axios } from 'axios';
-import CourseContext from "../../courseContext";
-import AddIcon from "../../icons/add";
+import CourseContext from "../Context";
+import AddIcon from "../../../icons/add";
 
 const CourseSearchResultItem = (course: CourseState) => {
   const [, dispatch] = useContext(CourseContext)

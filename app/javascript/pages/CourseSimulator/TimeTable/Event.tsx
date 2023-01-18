@@ -1,5 +1,5 @@
 import React from 'react';
-import {GroupEventState} from '../../courseReducer';
+import {GroupEventState} from '../Reducer';
 import classNames from 'classnames';
 
 const calculateGridRowValue = (event: GroupEventState) => {
