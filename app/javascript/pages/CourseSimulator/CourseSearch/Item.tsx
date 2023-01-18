@@ -43,6 +43,7 @@ const CourseSearchResultItem = (course: CourseState) => {
         className="px-4 py-2 text-lg bg-blue-400 hover:bg-blue-500 rounded-md"
         onClick={() => {
           postCourseRegisteration(id, type);
+          dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: undefined })
         }}
         onMouseEnter={()=> dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: course })}
         onMouseLeave={()=> dispatch({ type: ReducerActions.SET_HOVERED_COURSE, payload: undefined })}
