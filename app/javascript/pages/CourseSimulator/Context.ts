@@ -1,5 +1,5 @@
 import { createContext, Dispatch } from "react"
-import { initReducer, ReducerActionProps, ReducerStateProps } from "./courseReducer"
+import { initReducer, ReducerActionProps, ReducerStateProps } from "./Reducer"
 type CourseContextProps = [
   ReducerStateProps,
   Dispatch<ReducerActionProps>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+
+
   def build_events_json(group)
     group.events.map do |event|
       {

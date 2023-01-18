@@ -1,5 +1,5 @@
 // Entry point for the build script in your package.json
-import './components/Home'
+import './pages/CourseSimulator'
 import 'react_ujs';
 import axios from 'axios'
 

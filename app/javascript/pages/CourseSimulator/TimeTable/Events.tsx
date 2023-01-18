@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
-import CourseContext from '../../courseContext';
+import CourseContext from '../Context';
 import { TIME_LIST } from ".";
 import Event from './Event';
-import {GroupEventState} from '../../courseReducer';
+import {GroupEventState} from '../Reducer';
 
 const colipseEvents = (newEvent: GroupEventState, currentEvents: GroupEventState[]): boolean => {
   const result = currentEvents.find(event => {
@@ -28,7 +28,7 @@ const Events = () => {
 
   return (
     <ol
-      className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
+      className="z-20 col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
       style={{ gridTemplateRows: `repeat(${TIME_LIST.length * 12}, 1fr)` }}
     >
       {
