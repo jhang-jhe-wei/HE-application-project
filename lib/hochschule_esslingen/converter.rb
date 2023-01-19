@@ -23,6 +23,7 @@ module HochschuleEsslingen
                   place_url: event['place_link'],
                   place: event['Raum'],
                   wday: convert_wday_from(event['Tag']),
+                  frequency: event['Rhythmus'],
                   **parse_date_range(event['Dauer']),
                   **parse_course_time(event['Zeit'])
                 }
