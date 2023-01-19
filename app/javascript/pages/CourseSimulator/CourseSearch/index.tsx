@@ -26,6 +26,10 @@ const CourseSearch = ({contentSize}) => {
         return;
       }
 
+      if (!nextPage) {
+        return;
+      }
+
       if (searchText === '') {
         setCourses([]);
         return;
@@ -45,6 +49,16 @@ const CourseSearch = ({contentSize}) => {
   );
 
   useEffect(() => {
+    if (fetching) {
+      return;
+    }
+
+    if (searchText === '') {
+      setCourses([]);
+      return;
+    }
+
+    setFetching(true);
     fetchCourses(searchText, 1)
       .then((response) => {
         const {courses: newCourses, nextPage} = response.data
@@ -53,6 +67,7 @@ const CourseSearch = ({contentSize}) => {
       })
       .catch((error) => console.log(error))
       .finally(() => setFetching(false))
+    return () => setNextPage(null)
   }, [searchText])
 
   const loader = (
