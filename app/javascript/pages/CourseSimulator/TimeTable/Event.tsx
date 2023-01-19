@@ -113,29 +113,29 @@ const Event = (props: EventProps) => {
       >
         <h1 className="text-2xl">{courseName}</h1>
 
-        <div className="flex break-words text-lg">
-          <div className="space-y-2 w-1/3 py-8 mr-4 text-right font-bold">
+        <div className="flex text-lg break-words">
+          <div className="w-1/3 py-8 mr-4 font-bold text-right space-y-2">
             <p>Day</p>
             <p>Begins</p>
             <p>Ends</p>
             <p>Location & Class</p>
             <p>Frequency</p>
           </div>
-          <div className="space-y-2 w-2/3 py-8 ml-4">
+          <div className="w-2/3 py-8 ml-4 space-y-2">
             <p>{calculateDay(event.wday) }</p>
-            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+            <p className="flex items-center gap-2 fill-black">
             <CalendarIcon/>
               { calculateTimeStart(event) }
             </p>
-            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+            <p className="flex items-center gap-2 fill-black">
             <CalendarIcon/>
               { calculateTimeEnd(event) }
             </p>
-            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+            <p className="flex items-center gap-2 fill-black">
               <LocationIcon/>
               { event.place }
             </p>
-            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+            <p className="flex items-center gap-2 fill-black">
               <RepeatIcon/>
               &nbsp;
               { event.frequency }
@@ -146,7 +146,7 @@ const Event = (props: EventProps) => {
         <div className="grid grid-cols-2 gap-4">
           <div></div>
           <button onClick={closeModal} className="place-self-end fill-white text-white text-md font-medium rounded-md bg-blue-500 p-2 px-6 h-[3rem] hover:bg-blue-600 ">
-            <div className="gap-4 inline-block inline-block flex items-center justify-center">
+            <div className="flex items-center justify-center gap-4">
               <p>Close course description</p>
               <CloseIcon />
             </div>
