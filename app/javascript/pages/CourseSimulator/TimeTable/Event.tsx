@@ -79,13 +79,6 @@ const customStyles = {
   },
 };
 
-const mq = window.matchMedia("(max-width: 768px)");
-if (mq.matches) {
-  customStyles.content.width = '100%';
-  customStyles.content.borderStyle = 'none';
-  customStyles.content.borderRadius = '0';
-}
-
 const Event = (props: EventProps) => {
   const {
     event,
