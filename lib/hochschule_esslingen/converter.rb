@@ -13,7 +13,7 @@ module HochschuleEsslingen
           name: course['class_name'],
           class_url: course['class_url'],
           semester: course['semester'],
-          groups: course['termin_groups'].map do |group|
+          groups: course['termin_groups']&.map do |group|
             {
               name: group['name'],
               events: group['events'].map do |event|

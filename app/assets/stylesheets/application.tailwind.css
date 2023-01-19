@@ -23,3 +23,16 @@ input:-webkit-autofill:focus {
 .full-page-max-height {
   max-height: calc(100vh - 4.5rem - 1.5rem);
 }
+
+.ReactModal__Content {
+    transform: translateY(50%);
+    transition: transform 500ms ease-in-out;
+}
+
+.ReactModal__Content--after-open{
+    transform: translateY(0);
+}
+
+.ReactModal__Content--before-close{
+    transform: translateY(50%);
+}

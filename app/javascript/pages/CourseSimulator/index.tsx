@@ -6,7 +6,7 @@ import SelectedCourseList from './SelectedCourseList';
 import CourseContext from './Context';
 import {default as CourseReducer, initReducer, ReducerActions, RegisteredCourseRecordState} from './Reducer';
 import {default as Axios} from 'axios';
-import Alert from './TimeTable/Alert';
+import Alert from './Alert';
 import CourseFullList from "./CourseFullList";
 
 const CourseSimulator = () => {
