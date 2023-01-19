@@ -34,13 +34,13 @@ const calculateTimeEnd = (event: GroupEventState) => {
 }
 
 const calculateDay = (wday: number) => {
-  if(wday === 0) return 'Monday';
-  if(wday === 1) return 'Tuesday';
-  if(wday === 2) return 'Wednesday';
-  if(wday === 3) return 'Thursday';
-  if(wday === 4) return 'Friday';
-  if(wday === 5) return 'Saturday';
-  if(wday === 6) return 'Sunday';
+  if(wday === 1) return 'Monday';
+  if(wday === 2) return 'Tuesday';
+  if(wday === 3) return 'Wednesday';
+  if(wday === 4) return 'Thursday';
+  if(wday === 5) return 'Friday';
+  if(wday === 6) return 'Saturday';
+  if(wday === 0) return 'Sunday';
   return wday
 
 }
