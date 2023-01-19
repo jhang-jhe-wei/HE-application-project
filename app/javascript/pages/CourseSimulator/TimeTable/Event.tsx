@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import {GroupEventState} from '../Reducer';
+import { GroupEventState } from '../Reducer';
 import classNames from 'classnames';
 import Modal from 'react-modal';
+import CloseIcon from "../../../icons/close";
+import LocationIcon from "../../../icons/location";
+import CalendarIcon from "../../../icons/calendar";
+import RepeatIcon from "../../../icons/repeat";
 
 const calculateGridRowValue = (event: GroupEventState) => {
   const position = Math.floor((event.startedMinuteAt - 7 * 60) / 5) + 1
@@ -17,6 +21,31 @@ const calculateTimeDuration = (event: GroupEventState) => {
   return `${sHour}:${sMinute}~${eHour}:${eMinute}`
 }
 
+const calculateTimeStart = (event: GroupEventState) => {
+  const sHour = Math.floor(event.startedMinuteAt/60);
+  const sMinute = (event.startedMinuteAt % 60).toString().padStart(2, '0');
+  return `${sHour}:${sMinute}`
+}
+
+const calculateTimeEnd = (event: GroupEventState) => {
+  const eHour = Math.floor(event.endedMinuteAt/60);
+  const eMinute = (event.endedMinuteAt % 60).toString().padStart(2, '0');
+  return `${eHour}:${eMinute}`
+}
+
+const calculateDay = (wday: number) => {
+  if(wday === 0) return 'Monday';
+  if(wday === 1) return 'Tuesday';
+  if(wday === 2) return 'Wednesday';
+  if(wday === 3) return 'Thursday';
+  if(wday === 4) return 'Friday';
+  if(wday === 5) return 'Saturday';
+  if(wday === 6) return 'Sunday';
+  return wday
+
+}
+
+
 const calculateColStartValue = (wday: number) => {
   if(wday === 0) return 7;
   return wday
@@ -31,12 +60,31 @@ interface EventProps {
 
 const customStyles = {
   overlay: {
-    zIndex: 100
+    zIndex: 100,
+    backdropFilter: 'blur(5px)',
+    webkitBackdropFilter: 'blur(5px)',
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
   },
   content: {
-    inset: '10% 20%',
+    height: 'min-content',
+    width: '60%',
+    minWidth: 'min-content',
+    // position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '1.5rem',
+    borderStyle: 'solid',
+    borderRadius: '1rem',
   },
 };
+
+const mq = window.matchMedia("(max-width: 768px)");
+if (mq.matches) {
+  customStyles.content.width = '100%';
+  customStyles.content.borderStyle = 'none';
+  customStyles.content.borderRadius = '0';
+}
 
 const Event = (props: EventProps) => {
   const {
@@ -63,8 +111,48 @@ const Event = (props: EventProps) => {
         style={customStyles}
         contentLabel="Course Detail"
       >
-        <button onClick={closeModal}>close</button>
-        <p className="break-words">{JSON.stringify(event)}</p>
+        <h1 className="text-2xl">{courseName}</h1>
+
+        <div className="flex break-words text-lg">
+          <div className="space-y-2 w-1/3 py-8 mr-4 text-right font-bold">
+            <p>Day</p>
+            <p>Begins</p>
+            <p>Ends</p>
+            <p>Location & Class</p>
+            <p>Frequency</p>
+          </div>
+          <div className="space-y-2 w-2/3 py-8 ml-4">
+            <p>{calculateDay(event.wday) }</p>
+            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+            <CalendarIcon/>
+              { calculateTimeStart(event) }
+            </p>
+            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+            <CalendarIcon/>
+              { calculateTimeEnd(event) }
+            </p>
+            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+              <LocationIcon/>
+              { event.place }
+            </p>
+            <p className="gap-2 inline-block inline-block flex items-center fill-black">
+              <RepeatIcon/>
+              &nbsp;
+              { event.frequency }
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div></div>
+          <button onClick={closeModal} className="place-self-end fill-white text-white text-md font-medium rounded-md bg-blue-500 p-2 px-6 h-[3rem] hover:bg-blue-600 ">
+            <div className="gap-4 inline-block inline-block flex items-center justify-center">
+              <p>Close course description</p>
+              <CloseIcon />
+            </div>
+          </button>
+        </div>
+
       </Modal>
 
       <li
