@@ -22,6 +22,7 @@ json.array! @course_register_records do |course_register_record|
       json.csi_url event.csi_url
       json.place_url event.place_url
       json.frequency event.frequency
+      json.class_url register_record.course.class_url
     end
   end
 end

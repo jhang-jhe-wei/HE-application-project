@@ -9,6 +9,7 @@ export interface GroupEventState {
   frequency: string;
   started_date_on: Date;
   ended_date_on: Date;
+  class_url: string;
 }
 
 export interface CourseState {

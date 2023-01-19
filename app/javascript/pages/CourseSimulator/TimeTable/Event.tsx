@@ -104,7 +104,7 @@ const Event = (props: EventProps) => {
         style={customStyles}
         contentLabel="Course Detail"
       >
-        <h1 className="text-2xl">{courseName}</h1>
+        <a href={event.class_url} target="_blank" ><h1 className="text-2xl text-blue-600 hover:underline">{courseName}</h1></a>
 
         <div className="flex text-lg break-words">
           <div className="w-1/3 py-8 mr-4 font-bold text-right space-y-2">
