@@ -19,7 +19,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1.2
+          ruby-version: 3.1.4
 
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
@@ -44,6 +44,7 @@ jobs:
         with:
           git_remote_url: 'ssh://dokku@dokku.wells.tw:22/course-simulator'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          git_push_flags: --force -vvv
 
       - name: Run database migration
         run: dokku run course-simulator bundle exec rake db:migrate
