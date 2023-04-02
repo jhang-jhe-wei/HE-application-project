@@ -49,4 +49,11 @@ jobs:
           git_push_flags: --force -vvv
 
       - name: Run database migration
-        run: dokku run course-simulator bundle exec rake db:migrate
+        uses: appleboy/ssh-action@master
+        with:
+          host: dokku.wells.tw
+          username: dokku
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: 22
+          script: |
+            dokku run course-simulator bundle exec rake db:migrate
