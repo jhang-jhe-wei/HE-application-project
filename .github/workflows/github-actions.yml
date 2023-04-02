@@ -55,4 +55,4 @@ jobs:
           username: dokku
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          script: whoami
+          script: run course-simulator rails db:migrate
