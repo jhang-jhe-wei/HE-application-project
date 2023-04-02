@@ -49,11 +49,7 @@ jobs:
           git_push_flags: --force -vvv
 
       - name: Run database migration
-        uses: appleboy/ssh-action@master
+        uses: webfactory/ssh-agent@v0.5.0
         with:
-          host: dokku.wells.tw
-          username: dokku
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            dokku run course-simulator bundle exec rake db:migrate
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-command: ssh -o StrictHostKeyChecking=no dokku@dokku.wells.tw run course-simulator rails db:migrate
