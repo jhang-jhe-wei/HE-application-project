@@ -53,7 +53,7 @@ jobs:
         with:
           host: dokku.wells.tw
           username: dokku
-          password: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             dokku run course-simulator bundle exec rake db:migrate
